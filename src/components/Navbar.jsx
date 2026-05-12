@@ -34,6 +34,10 @@ const Navbar = () => {
       name: "Admin",
       path: "/admin",
     },
+    {
+      name: "Add Destination",
+      path: "/add-destination",
+    },
   ];
 
   return (
