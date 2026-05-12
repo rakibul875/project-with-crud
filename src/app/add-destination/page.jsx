@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   FieldError,
@@ -9,9 +11,32 @@ import {
   TextArea,
   Button,
 } from "@heroui/react";
+
+
 import React from "react";
 
 const AddDestination = () => {
+  
+  const handelDestinationSubmit = async (e) => {
+    e.preventDefault();
+    const fromData = new FormData(e.currentTarget);
+    const destinationData = Object.fromEntries(fromData.entries());
+    console.log(destinationData);
+
+    const res = await fetch("http://localhost:8000/destination", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(destinationData),
+    });
+
+    const data = await res.json();
+
+    console.log(data);
+  
+  };
+
   return (
     <div className="container mx-auto px-4 sm:px-2 lg:px-8 py-6 space-y-5">
       <h1 className="text-2xl sm:text-3xl font-bold text-center sm:text-left">
@@ -19,7 +44,10 @@ const AddDestination = () => {
       </h1>
 
       <Card>
-        <form className="p-8 sm:p-2 md:p-7 space-y-6 sm:space-y-5 lg:w-3xl lg:mx-auto">
+        <form
+          onSubmit={handelDestinationSubmit}
+          className="p-8 sm:p-2 md:p-7 space-y-6 sm:space-y-5 lg:w-3xl lg:mx-auto"
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
             <div className="sm:col-span-2">
               <TextField name="destinationName" isRequired>
