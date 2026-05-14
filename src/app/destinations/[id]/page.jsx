@@ -1,3 +1,6 @@
+
+import { DeletePage } from "@/components/DeletePage";
+import { EditPage } from "@/components/EditPage";
 import Image from "next/image";
 import React from "react";
 import { CiEdit } from "react-icons/ci";
@@ -10,7 +13,7 @@ const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
   const res = await fetch(`http://localhost:8000/destination/${id}`);
   const data = await res.json();
-  console.log(data);
+  
   return (
     <div className="container mx-auto">
       <div className="mt-5 flex justify-between lg:p-0 p-5">
@@ -20,15 +23,14 @@ const DestinationDetailsPage = async ({ params }) => {
             Back To Destination
           </h1>
         </div>
-        <div className="">
-          <button className="btn btn-outline text-gray-500">
-            <CiEdit />
-            Edit
-          </button>
-          <button className="btn btn-outline text-red-500 ml-3">
+        <div className="flex items-center">
+          <EditPage data={data} />
+          <DeletePage/>
+          {/* <button className="btn btn-outline text-red-500 ml-3">
             <MdOutlineDelete />
+            
             Delete
-          </button>
+          </button> */}
         </div>
       </div>
 
@@ -57,9 +59,7 @@ const DestinationDetailsPage = async ({ params }) => {
             {data.duration}
           </p>
           <div className="">
-            
-        <p className="text-xl">{data.description}</p>
-            
+            <p className="text-xl">{data.description}</p>
           </div>
         </div>
       </div>

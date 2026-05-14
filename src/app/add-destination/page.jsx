@@ -21,7 +21,7 @@ const AddDestination = () => {
     e.preventDefault();
     const fromData = new FormData(e.currentTarget);
     const destinationData = Object.fromEntries(fromData.entries());
-    console.log(destinationData);
+    
 
     const res = await fetch("http://localhost:8000/destination", {
       method: "POST",
@@ -33,7 +33,7 @@ const AddDestination = () => {
 
     const data = await res.json();
 
-    console.log(data);
+    
   
   };
 
