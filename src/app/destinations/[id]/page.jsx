@@ -3,11 +3,9 @@ import { DeletePage } from "@/components/DeletePage";
 import { EditPage } from "@/components/EditPage";
 import Image from "next/image";
 import React from "react";
-import { CiEdit } from "react-icons/ci";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoIosPin } from "react-icons/io";
-import { MdOutlineDelete } from "react-icons/md";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -23,14 +21,10 @@ const DestinationDetailsPage = async ({ params }) => {
             Back To Destination
           </h1>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           <EditPage data={data} />
-          <DeletePage/>
-          {/* <button className="btn btn-outline text-red-500 ml-3">
-            <MdOutlineDelete />
-            
-            Delete
-          </button> */}
+          <DeletePage data={data}/>
+       
         </div>
       </div>
 

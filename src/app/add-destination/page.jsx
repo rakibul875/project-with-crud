@@ -11,6 +11,7 @@ import {
   TextArea,
   Button,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 
 
 import React from "react";
@@ -33,7 +34,7 @@ const AddDestination = () => {
 
     const data = await res.json();
 
-    
+    redirect('/destinations')
   
   };
 
