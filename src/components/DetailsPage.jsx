@@ -9,6 +9,7 @@ import { IoIosPin } from "react-icons/io";
 import { FaCalendarAlt } from "react-icons/fa";
 import { Button, DateField, Label } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 const DetailsPage = ({ data }) => {
     const [date, setDate]=useState(null)
@@ -37,7 +38,7 @@ const DetailsPage = ({ data }) => {
             body: JSON.stringify(bookingData)
         })
         const bookData=await res.json()
-        console.log(bookData)
+        toast.success("Booking success")
   };
   return (
     <div>
