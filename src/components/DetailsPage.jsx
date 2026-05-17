@@ -29,11 +29,13 @@ const DetailsPage = ({ data }) => {
             BookingDate:new Date(date),
 
         }
-        console.log(data)
-        const res= await fetch('http://localhost:8000/booking',{
+        const {data:tokenData}=await authClient.token()
+        console.log(tokenData.token)
+        const res= await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`,{
             method:'POST',
             headers:{
-                'content-type':'application/json'
+                'content-type':'application/json',
+                'authorization': `bearer ${tokenData?.token}`
             },
             body: JSON.stringify(bookingData)
         })

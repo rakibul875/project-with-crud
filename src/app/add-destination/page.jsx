@@ -22,9 +22,8 @@ const AddDestination = () => {
     e.preventDefault();
     const fromData = new FormData(e.currentTarget);
     const destinationData = Object.fromEntries(fromData.entries());
-    
 
-    const res = await fetch("http://localhost:8000/destination", {
+    const res = await fetch("http:///destination", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -24,7 +24,7 @@ export function EditPage({data}) {
     const destinationData = Object.fromEntries(fromData.entries());
     console.log(destinationData);
 
-    const res = await fetch(`http://localhost:8000/destination/${_id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

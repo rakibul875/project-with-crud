@@ -7,7 +7,7 @@ import { MdOutlineDelete } from "react-icons/md";
 export function DeletePage ({data}) {
     const {_id}=data;
     const handelDelete=async()=>{
-         const res = await fetch(`http://localhost:8000/destination/${_id}`, {
+         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}destination/${_id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
